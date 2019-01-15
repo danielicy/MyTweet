@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Helpers\AppException.cs" />
     <Compile Remove="Services\Contracts\IUserService.cs" />
     <Compile Remove="Services\UserService.cs" />
   </ItemGroup>
