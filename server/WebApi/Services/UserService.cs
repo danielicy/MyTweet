@@ -1,16 +1,27 @@
-﻿using System;
+using DataCore;
+using DataModels.Models.UserManagment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using MyTweet.Services.Contracts;
+using WebApi.Helpers;
 
-namespace MyTweet.Services
+namespace WebApi.Services
 {
+    public interface IUserService
+    {
+        User Authenticate(string username, string password);
+        IEnumerable<User> GetAll();
+        User GetById(int id);
+        User Create(User user, string password);
+        void Update(User user, string password = null);
+        void Delete(int id);
+    }
+
     public class UserService : IUserService
     {
-        private A2BContext _context;
+        private MyTweetContext _context;
 
-        public UserService(A2BContext context)
+        public UserService(MyTweetContext context)
         {
             _context = context;
         }
