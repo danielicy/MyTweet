@@ -10,6 +10,6 @@ namespace DataModels.Models.UserManagment
 
 
         [Column("role_name")]
-        public string RoleName { get; set; }
+        public string RoleName { get; set; }       
     }
 }

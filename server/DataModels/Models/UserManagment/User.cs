@@ -53,7 +53,7 @@ namespace DataModels.Models.UserManagment
         [Column("user_picture")]
         public byte[] UserPicture { get; set; }
 
-        [Column("UserStatus")]
+        [Column("UserStatus")]      
         public int UserStatus { get; set; }
 
         [Column("role_id")]
@@ -61,7 +61,6 @@ namespace DataModels.Models.UserManagment
 
         [ForeignKey("RoleId")]
         public Role Role { get; set; }
-
-        
+      
     }
 }
