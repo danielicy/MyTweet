@@ -27,6 +27,11 @@
 
   <ItemGroup>
     <Compile Remove="Services\Contracts\IUserService.cs" />
+    <Compile Remove="Services\UserService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataModels\DataModels.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
