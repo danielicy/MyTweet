@@ -26,22 +26,15 @@ namespace DBTools
 
         private static string _connectionString;
 
-        public DBManager()
+        public DBManager(string connectionstring)
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            _connectionString = connectionstring;
 
             fillConnectionContainer(_connectionString);
 
             executor = new UpgradeExecutor();
-        }
-
-      
-         
-
-        public void Run()
-        {
-
-        }
+        } 
+        
 
         private void fillConnectionContainer(string connectionString)
         {
@@ -160,8 +153,7 @@ namespace DBTools
         /// <summary>
         /// ////////////////////This Section is tool to parsing sql connection string using aliass name for diffrent sqlConn types
         /// </summary>
-        private static readonly string[] ServerAliases = { "server", "host", "data source", "datasource", "address",
-                                           "addr", "network address" };
+        private static readonly string[] ServerAliases = { "server", "host", "data source", "datasource", "address", "addr", "network address" };
         private static readonly string[] DatabaseAliases = { "database", "initial catalog" };
         private static readonly string[] UsernameAliases = { "user id", "uid", "username", "user name", "user", "userid" };
         private static readonly string[] PasswordAliases = { "password", "pwd" };
