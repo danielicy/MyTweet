@@ -16,6 +16,7 @@ import { LoginComponent } from './loginmodule/login';
 import { RegisterComponent } from './loginmodule/register';
 
 import { TweetComponent } from './tweetmodule/tweet';
+import { PersonalzoneComponent } from './personalzone/personalzone.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { TweetComponent } from './tweetmodule/tweet';
         LoginComponent,
         RegisterComponent,
         TweetComponent
+		PersonalzoneComponent
         
     ],
     providers: [
