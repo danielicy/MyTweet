@@ -55,6 +55,19 @@ namespace MyTweetAPI.Controllers
             return Ok(userDto);
         }
 
+        /// <summary>
+        /// Gets followed users tweets (The tweeting user, date added, content), ordered by date
+        /// </summary>
+        /// <param name="id">follower id</param>
+        /// <returns></returns>
+        [HttpGet("mytweets/{id}")]
+        public IActionResult GetMyTweets(int userid)
+        {
+            var tweets = _tweetsService.GetMyTweets(userid);
+            var userDto = _mapper.Map<Tweet>(tweets);
+            return Ok(userDto);
+        }
+
         [HttpPost("tweet")]
         public IActionResult Tweet([FromBody]TweetDto tweetDto)
         {
