@@ -6,7 +6,10 @@ import { first } from 'rxjs/operators';
 import { Tweet } from '../../_models';
 import { TweetsService } from '../_services'; 
 
-@Component({ templateUrl: 'tweet.component.html' })
+@Component({
+    selector: 'app-tweet',
+    templateUrl: 'tweet.component.html'
+})
 export class TweetComponent implements OnInit, OnDestroy {
     tweets: Tweet[] = [];
 

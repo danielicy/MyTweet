@@ -1,0 +1,10 @@
+﻿<div>
+    <div class="form-group">
+        <label >Tweet</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+        <a routerLink="/tweet" class="btn btn-link">Tweet</a>
+    </div>
+</div>
