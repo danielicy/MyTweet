@@ -15,6 +15,9 @@ namespace WebApi.Helpers
 
             CreateMap<Tweet, TweetDto>();
             CreateMap<TweetDto, Tweet>();
+
+            CreateMap<Follower, FollowerDto>();
+            CreateMap<FollowerDto, Follower>();
         }
     }
 }

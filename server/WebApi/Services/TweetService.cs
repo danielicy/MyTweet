@@ -1,5 +1,6 @@
 ﻿using DataCore;
 using DataModels.Models.Tweets;
+using DataModels.Models.UserManagment;
 using MyTweetAPI.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,12 @@ namespace MyTweetAPI.Services
             throw new NotImplementedException();
         }
 
+        public void Follow(Follower follower)
+        {
+            _context.Follower.Add(follower);
+            _context.SaveChanges();
+        }
+
         public IEnumerable<Tweet> GetAll()
         {
             return _context.Tweets;
@@ -50,9 +57,22 @@ namespace MyTweetAPI.Services
             throw new NotImplementedException();
         }
 
+        public void UnFollow(Follower follower)
+        {
+            var itemToRemove = _context.Follower.Where(followed => followed.Follow.Equals(follower)).FirstOrDefault();
+
+            if (follower != null)
+            {
+                _context.Follower.Remove(itemToRemove);
+                _context.SaveChanges();
+            }
+        }
+
         public void Update(Tweet model, string param = null)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

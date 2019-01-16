@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using MyTweetAPI.Services.Contracts;
 using WebApi.Helpers;
 using Microsoft.AspNetCore.Authorization;
+using DataModels.Models.UserManagment;
 
 namespace MyTweetAPI.Controllers
 {
@@ -59,6 +60,46 @@ namespace MyTweetAPI.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpPost("follow")]
+        public IActionResult Follow([FromBody]FollowerDto tweetDto)
+        {
+            // map dto to entity
+            var follower = _mapper.Map<Follower>(tweetDto);
+
+            try
+            {
+                // save 
+                _tweetsService.Follow(follower);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpPost("unfollow")]
+        public IActionResult UnFollow([FromBody]FollowerDto tweetDto)
+        {
+            // map dto to entity
+            var follower = _mapper.Map<Follower>(tweetDto);
+
+            try
+            {
+                // save 
+                _tweetsService.UnFollow(follower);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+
 
     }
 }

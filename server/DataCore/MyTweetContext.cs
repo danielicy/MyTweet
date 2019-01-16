@@ -39,6 +39,7 @@ namespace DataCore
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Tweet> Tweets { get; set; }
+        public DbSet<Follower> Follower { get; set; }
 
 
 
