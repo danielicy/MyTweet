@@ -43,5 +43,6 @@ dist
 .idea
 
 
-.js
-.map
+*.js
+*.map
+ 
