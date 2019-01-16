@@ -56,6 +56,12 @@ CREATE TABLE `tweets` (
     REFERENCES `users` (`userid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+    -- fill roles table
+    INSERT INTO `roles` (`role_id`, `role_name`) VALUES ('1', 'admin');
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES ('2', 'operator');
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES ('3', 'user');
+
 
 
 
