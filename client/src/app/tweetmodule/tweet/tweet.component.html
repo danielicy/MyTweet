@@ -1,11 +1,22 @@
 ﻿
 <h3>Welcome To My Tweet!</h3>
 <div>
-    <app-tweeter></app-tweeter>
+   
+    <div>
+        <div class="form-group">
+            <label>Tweet</label>
+            <textarea #tweetbox rows="4" cols="50">
+Share the world with your thoughts...
+</textarea>
+
+            <button (click)="tweet(tweetbox.value); tweetbox.value=''">
+                Tweet
+            </button>
+        </div>
+    </div>
 </div>
 <ul>
 	<li *ngFor="let tweet of tweets">
-		{{tweet.username}} ({{tweet.content}} )
-		- <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+		{{tweet.username}}: {{tweet.content}} 	
 	</li>
 </ul>

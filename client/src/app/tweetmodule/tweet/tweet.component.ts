@@ -3,19 +3,31 @@ import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 
-import { Tweet } from '../../_models';
+import { Tweet, User } from '../../_models';
 import { TweetsService } from '../_services'; 
+
+import { AlertService, AuthenticationService } from '@/_services';
 
 @Component({
     selector: 'app-tweet',
     templateUrl: 'tweet.component.html'
 })
 export class TweetComponent implements OnInit, OnDestroy {
+    msg: Tweet;
     tweets: Tweet[] = [];
+    currentUser: User;
+    currentUserSubscription: Subscription;
+    loading = false;
+    submitted = false;
 
     constructor(
-        private tweetsService: TweetsService       
+        private authenticationService: AuthenticationService,
+        private tweeterService: TweetsService,
+        private alertService: AlertService     
     ) {
+        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+            this.currentUser = user;
+        });
         
     }
    
@@ -29,9 +41,26 @@ export class TweetComponent implements OnInit, OnDestroy {
     }
 
     private loadAllTweets() {
-        this.tweetsService.getAll().pipe(first()).subscribe(tweets => {
+        this.tweeterService.getAll().pipe(first()).subscribe(tweets => {
             this.tweets = tweets;
         });
+    }
+
+    tweet(content: string): void {
+        content = content.trim();
+        if (!content) { return; }
+
+        this.tweeterService.tweet({ content, userid: this.currentUser.id } as Tweet)
+            .subscribe(data => {
+                this.alertService.success('What a Tweet!!', true);
+                this.tweets.push({ content, userid: this.currentUser.id } as Tweet);
+            },
+                error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                });
+
+
     }
   
 }
