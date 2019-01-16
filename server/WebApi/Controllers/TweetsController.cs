@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using DataModels.Dtos;
+using DataModels.Models.Tweets;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -11,7 +13,7 @@ using WebApi.Helpers;
 
 namespace MyTweetAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TweetsController : ControllerBase
     {
@@ -27,6 +29,33 @@ namespace MyTweetAPI.Controllers
             _tweetsService = tweetsService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var tweets = _tweetsService.GetAll();
+            var userDtos = _mapper.Map<IList<TweetDto>>(tweets);
+            return Ok(userDtos);
+        }
+
+        [HttpPost("tweet")]
+        public IActionResult Tweet([FromBody]UserDto userDto)
+        {
+            // map dto to entity
+            var user = _mapper.Map<Tweet>(userDto);
+
+            try
+            {
+                // save 
+                _tweetsService.Create(user, userDto.Password);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
     }
