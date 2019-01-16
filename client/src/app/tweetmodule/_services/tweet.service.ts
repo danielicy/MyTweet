@@ -1,8 +1,8 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Tweet } from '@/_models';
-
+import { Tweet } from '../../_models';
+  
 @Injectable({ providedIn: 'root' })
 export class TweetsService {
     constructor(private http: HttpClient) { }
