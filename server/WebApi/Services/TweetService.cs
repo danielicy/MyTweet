@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Helpers;
 
 namespace MyTweetAPI.Services
 {
@@ -17,9 +18,17 @@ namespace MyTweetAPI.Services
             _context = context;
         }
 
-        public Tweet Create(Tweet model, string param)
+        public Tweet Create(Tweet tweet, string content)
         {
-            throw new NotImplementedException();
+                    
+            
+
+      
+
+            _context.Tweets.Add(tweet);
+            _context.SaveChanges();
+
+            return tweet;
         }
 
         public void Delete(int id)
