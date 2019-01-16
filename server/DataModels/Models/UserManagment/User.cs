@@ -33,7 +33,7 @@ namespace DataModels.Models.UserManagment
         [Column("hashed_password")]
         public byte[] HashedPassword { get; set; }
 
-        [NotMapped]
+        [Column("password_salt")]
         public byte[] PasswordSalt { get; set; }
 
         [Column("created_date")]
