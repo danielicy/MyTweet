@@ -14,6 +14,10 @@ export class TweetsService {
     getById(id: number) {
         return this.http.get(`${config.apiUrl}/tweets/${id}`);
     }
+	
+	 getFollowedTweets(id: number) {
+        return this.http.get(`${config.apiUrl}/tweets/followed/${id}`);
+    }	
 
     tweet(tweet: Tweet) {
         return this.http.post(`${config.apiUrl}/tweets/tweet`, tweet);

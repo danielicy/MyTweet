@@ -57,14 +57,13 @@ namespace WebApi.Services
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
 
-            /*  if (_context.Users.Any(x => x.UserName.Equals( user.UserName)))
-                  throw new AppException("Username \"" + user.UserName + "\" is already taken");*/
+            
             if (_context.Users.Any(t => t.UserName.ToLower().Equals(user.UserName.ToLower())))
                 throw new AppException("Username \"" + user.UserName + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
-           // user.Id = _context.Users.Max(id => id.Id)+1;
+          
             user.HashedPassword = passwordHash;
             user.PasswordSalt = passwordSalt;
             user.Role = _context.Roles.Where(role => role.RoleId == 3).FirstOrDefault();

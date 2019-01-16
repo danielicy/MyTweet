@@ -21,14 +21,7 @@ namespace MyTweetAPI.Services
 
         public Tweet Create(Tweet tweet, string param)
         {
-            tweet.User = _context.Users.Where(user => user.Id.Equals(tweet.UserId)).FirstOrDefault();
-
-            tweet.CreatedDate = DateTime.Now;
-       
-            _context.Tweets.Add(tweet);
-            _context.SaveChanges();
-
-            return tweet;
+            throw new NotImplementedException();
         }
 
         public void Delete(int id)
@@ -52,9 +45,43 @@ namespace MyTweetAPI.Services
             throw new NotImplementedException();
         }
 
-        public Tweet Tweet(string content)
+
+        /// <summary>
+        /// Gets followed users tweets (The tweeting user, date added, content), ordered by date
+        /// </summary>
+        /// <param name="id">follower id</param>
+        /// <returns></returns>
+        public IEnumerable<Tweet> GetFollowedtweets(int id)
         {
-            throw new NotImplementedException();
+            var followed = _context.Follower.Where(follower => follower.UserId == id);
+            return _context.Tweets.Where(userid => followed.Any(f => f.UserId== userid.UserId)).OrderBy(date => date.CreatedDate);
+        }
+
+        /// <summary>
+        /// Gets own users tweets
+        /// </summary>
+        /// <param name="id">loged in user Id</param>
+        /// <returns></returns>
+        public IEnumerable<Tweet> GetMyTweets(int id)
+        {
+            return _context.Tweets.Where(userid => userid.UserId == id).OrderBy(date => date.CreatedDate);
+        }
+
+        /// <summary>
+        /// Creates a new Tweet
+        /// </summary>
+        /// <param name="tweet"></param>
+        /// <returns></returns>
+        public Tweet Tweet(Tweet tweet)
+        {
+            tweet.User = _context.Users.Where(user => user.Id.Equals(tweet.UserId)).FirstOrDefault();
+
+            tweet.CreatedDate = DateTime.Now;
+
+            _context.Tweets.Add(tweet);
+            _context.SaveChanges();
+
+            return tweet;
         }
 
         public void UnFollow(Follower follower)

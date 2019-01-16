@@ -9,8 +9,14 @@ namespace MyTweetAPI.Services.Contracts
 {
     public interface ITweetService : ICRUDBase<Tweet>
     {
-        Tweet Tweet(string content);
+        Tweet Tweet(Tweet content);
+
         void Follow(Follower follower);
+
         void UnFollow(Follower follower);
+
+        IEnumerable<Tweet> GetFollowedtweets(int id);
+
+        IEnumerable<Tweet> GetMyTweets(int id);
     }
 }

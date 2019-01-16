@@ -41,6 +41,19 @@ namespace MyTweetAPI.Controllers
             var tweetDtos = _mapper.Map<IList<TweetDto>>(tweets);
             return Ok(tweetDtos);
         }
+        
+        /// <summary>
+        /// Gets followed users tweets (The tweeting user, date added, content), ordered by date
+        /// </summary>
+        /// <param name="id">follower id</param>
+        /// <returns></returns>
+        [HttpGet("followed/{id}")]
+        public IActionResult GetFollowedTweets(int userid)
+        {
+            var tweets = _tweetsService.GetFollowedtweets(userid);
+            var userDto = _mapper.Map<Tweet>(tweets);
+            return Ok(userDto);
+        }
 
         [HttpPost("tweet")]
         public IActionResult Tweet([FromBody]TweetDto tweetDto)
@@ -51,7 +64,7 @@ namespace MyTweetAPI.Controllers
             try
             {
                 // save 
-                _tweetsService.Create(tweet,null);
+                _tweetsService.Tweet(tweet);
                 return Ok();
             }
             catch (AppException ex)
