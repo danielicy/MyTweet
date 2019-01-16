@@ -41,3 +41,7 @@ typings
 dist
 
 .idea
+
+
+.js
+.map
