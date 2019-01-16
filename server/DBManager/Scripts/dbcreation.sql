@@ -30,6 +30,7 @@ CREATE TABLE `users` (
   `last_name` longtext,
   `email` longtext,
   `hashed_password` longblob,
+  `password_salt` longblob,
   `created_date` datetime NOT NULL,
   `modified_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
