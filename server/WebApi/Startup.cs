@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using DataCore;
 using MyTweetAPI.Services.Contracts;
+using MyTweetAPI.Services;
 
 namespace WebApi
 {
@@ -79,7 +80,8 @@ namespace WebApi
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-           
+            services.AddScoped<ITweetService, TweetService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

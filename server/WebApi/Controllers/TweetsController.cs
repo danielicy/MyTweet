@@ -10,11 +10,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MyTweetAPI.Services.Contracts;
 using WebApi.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyTweetAPI.Controllers
 {
-    [Route("[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("[controller]")]
     public class TweetsController : ControllerBase
     {
         private ITweetService _tweetsService;

@@ -29,7 +29,7 @@ namespace MyTweetAPI.Services
 
         public IEnumerable<Tweet> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Tweets;
         }
 
         public Tweet GetById(int id)
