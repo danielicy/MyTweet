@@ -2,11 +2,11 @@
     <div class="form-group">
         <label>Tweet</label>
         <textarea #tweetbox rows="4" cols="50">
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+Share the world with your thoughts...
 </textarea>
 
-        <button (click)="add(tweetbox.value); tweetbox.value=''">
-            add
+        <button (click)="tweet(tweetbox.value); tweetbox.value=''">
+            Tweet
         </button>
     </div>
 </div>

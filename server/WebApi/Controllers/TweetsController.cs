@@ -42,15 +42,15 @@ namespace MyTweetAPI.Controllers
         }
 
         [HttpPost("tweet")]
-        public IActionResult Tweet([FromBody]UserDto userDto)
+        public IActionResult Tweet([FromBody]TweetDto tweetDto)
         {
             // map dto to entity
-            var user = _mapper.Map<Tweet>(userDto);
+            var tweet = _mapper.Map<Tweet>(tweetDto);
 
             try
             {
                 // save 
-                _tweetsService.Create(user, userDto.Password);
+                _tweetsService.Create(tweet, tweetDto.Content);
                 return Ok();
             }
             catch (AppException ex)

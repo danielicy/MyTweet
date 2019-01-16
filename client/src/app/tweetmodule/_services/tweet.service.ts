@@ -16,7 +16,7 @@ export class TweetsService {
     }
 
     tweet(tweet: Tweet) {
-        return this.http.post(`${config.apiUrl}/tweets/register`, tweet);
+        return this.http.post(`${config.apiUrl}/tweets/tweet`, tweet);
     }
 
     update(tweet: Tweet) {
