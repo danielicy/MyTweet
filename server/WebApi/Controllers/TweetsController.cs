@@ -50,7 +50,7 @@ namespace MyTweetAPI.Controllers
             try
             {
                 // save 
-                _tweetsService.Create(tweet, tweetDto.Content);
+                _tweetsService.Create(tweet,null);
                 return Ok();
             }
             catch (AppException ex)

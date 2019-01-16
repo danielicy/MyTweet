@@ -59,7 +59,7 @@ namespace WebApi.Services
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            user.Id = _context.Users.Max(id => id.Id)+1;
+           // user.Id = _context.Users.Max(id => id.Id)+1;
             user.HashedPassword = passwordHash;
             user.PasswordSalt = passwordSalt;
             user.Role = _context.Roles.Where(role => role.RoleId == 3).FirstOrDefault();

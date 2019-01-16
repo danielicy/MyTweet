@@ -18,13 +18,14 @@ namespace MyTweetAPI.Services
             _context = context;
         }
 
-        public Tweet Create(Tweet tweet, string content)
+        public Tweet Create(Tweet tweet, string param)
         {
-                    
-            
 
-      
 
+            tweet.User = _context.Users.Where(user => user.Id.Equals(tweet.UserId)).FirstOrDefault();
+
+            tweet.CreatedDate = DateTime.Now;
+       
             _context.Tweets.Add(tweet);
             _context.SaveChanges();
 

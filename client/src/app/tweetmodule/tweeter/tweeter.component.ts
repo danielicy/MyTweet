@@ -45,9 +45,10 @@ export class TweeterComponent implements OnInit, OnDestroy {
         content = content.trim();
         if (!content) { return; }
 
-        this.tweeterService.tweet({ content, username : this.currentUser.username } as Tweet)
+        this.tweeterService.tweet({ content, userid: this.currentUser.id } as Tweet)
             .subscribe(data => {
                 this.alertService.success('What a Tweet!!', true);
+                this.tweeterService.getAll();
             },
                 error => {
                     this.alertService.error(error);
