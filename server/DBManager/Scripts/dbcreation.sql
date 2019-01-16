@@ -37,22 +37,23 @@ CREATE TABLE `users` (
   `role_id` int(11) NOT NULL,
   `information` varchar(1000) DEFAULT NULL,
   `user_picture` blob,
-  PRIMARY KEY (`UserId`),
+  PRIMARY KEY (`userid`),
   KEY `IX_role_id` (`role_id`) USING HASH ,
   CONSTRAINT `FK_user_app_Roles_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `mytweetdb`.`tweets` (
-  `idtweets` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tweets` (
+  `tweetid` INT NOT NULL AUTO_INCREMENT,
   `userid` INT NOT NULL,
-  `tweet_date` DATETIME NOT NULL,
-  `tweet_content` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`idtweets`),
-  UNIQUE INDEX `idtweets_UNIQUE` (`idtweets` ASC),
+  `created_date` DATETIME NOT NULL,
+   `modified_date` DATETIME DEFAULT NULL,
+  `tweet_content` longtext,
+  PRIMARY KEY (`tweetid`),
+  UNIQUE INDEX `idtweets_UNIQUE` (`tweetid` ASC),
   INDEX `FK_user_tweet_idx` (`userid` ASC),
   CONSTRAINT `FK_user_tweet`
     FOREIGN KEY (`userid`)
-    REFERENCES `mytweetdb`.`users` (`UserId`)
+    REFERENCES `users` (`userid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
