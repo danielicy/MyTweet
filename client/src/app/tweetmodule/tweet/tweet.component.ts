@@ -8,6 +8,7 @@ import { TweetsService } from '../_services';
 
 @Component({ templateUrl: 'tweet.component.html' })
 export class TweetComponent implements OnInit, OnDestroy {
+    tweets: Tweet[] = [];
    
     ngOnInit() {
         
