@@ -1,0 +1,9 @@
+﻿ 
+<p>Welcome to MY Tweet</p>
+<h3>All registered users:</h3>
+<ul>
+	<li *ngFor="let tweet of tweets">
+		{{tweet.username}} ({{tweet.content}} )
+		<!--- <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>-->
+	</li>
+</ul>
