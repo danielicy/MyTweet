@@ -57,6 +57,26 @@ CREATE TABLE `tweets` (
     REFERENCES `users` (`userid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+	CREATE TABLE `followers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userid` INT NOT NULL,
+  `followeduserid` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `FK_user_follower_idx` (`userid` ASC),
+  INDEX `FK_user_followed_idx` (`followeduserid` ASC),
+  CONSTRAINT `FK_user_follower`
+    FOREIGN KEY (`userid`)
+    REFERENCES `users` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_user_followed`
+    FOREIGN KEY (`followeduserid`)
+    REFERENCES `users` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
     
     -- fill roles table
     INSERT INTO `roles` (`role_id`, `role_name`) VALUES ('1', 'admin');
