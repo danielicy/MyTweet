@@ -46,6 +46,11 @@ namespace WebApi.Services
             return _context.Users.Find(id);
         }
 
+        public User GetByName(string name)
+        {
+            return _context.Users.Find(name);
+        }
+
         public User Create(User user, string password)
         {
             // validation

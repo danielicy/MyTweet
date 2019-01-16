@@ -104,6 +104,14 @@ namespace WebApi.Controllers
             return Ok(userDto);
         }
 
+        [HttpGet("{username}")]
+        public IActionResult GetByName(string name)
+        {
+            var user = _userService.GetByName(name);
+            var userDto = _mapper.Map<UserDto>(user);
+            return Ok(userDto);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody]UserDto userDto)
         {

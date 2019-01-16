@@ -20,8 +20,6 @@ namespace MyTweetAPI.Services
 
         public Tweet Create(Tweet tweet, string param)
         {
-
-
             tweet.User = _context.Users.Where(user => user.Id.Equals(tweet.UserId)).FirstOrDefault();
 
             tweet.CreatedDate = DateTime.Now;
