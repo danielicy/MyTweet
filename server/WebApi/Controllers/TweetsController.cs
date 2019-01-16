@@ -37,8 +37,8 @@ namespace MyTweetAPI.Controllers
         public IActionResult GetAll()
         {
             var tweets = _tweetsService.GetAll();
-            var userDtos = _mapper.Map<IList<TweetDto>>(tweets);
-            return Ok(userDtos);
+            var tweetDtos = _mapper.Map<IList<TweetDto>>(tweets);
+            return Ok(tweetDtos);
         }
 
         [HttpPost("tweet")]
