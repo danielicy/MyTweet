@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModels.Models.Tweets
 {
-    [Table("users")]
+    [Table("tweets")]
     public class Tweet
     {
         [Key, Column("tweetid")]
