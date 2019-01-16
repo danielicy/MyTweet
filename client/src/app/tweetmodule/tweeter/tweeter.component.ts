@@ -11,9 +11,11 @@ import { TweetsService } from '../_services';
     templateUrl: 'tweeter.component.html'
 })
 export class TweeterComponent implements OnInit, OnDestroy {
-     
+    loading = false;
+    submitted = false;
 
     constructor(
+        private tweeterService: TweetsService
        
     ) {
 
@@ -27,6 +29,23 @@ export class TweeterComponent implements OnInit, OnDestroy {
         // unsubscribe to ensure no memory leaks
 
     }
+
+
+    add(content: string): void {
+        this.submitted = true;
+        this.tweeterService.tweet(content)
+            .pipe(first())
+                .subscribe(
+                    data => {
+                        this.alertService.success('Registration successful', true);
+                        this.router.navigate(['/login']);
+                    },
+                    error => {
+                        this.alertService.error(error);
+                        this.loading = false;* /
+                    }
+    }
+
 
      
 
