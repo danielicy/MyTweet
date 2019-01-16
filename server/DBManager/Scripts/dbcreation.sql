@@ -3,9 +3,9 @@
 -- Current Database: `c4pssdb`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `a2bdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `mytweetdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `a2bdb`;
+USE `mytweetdb`;
 
 --
 -- Table structure for table `roles`
