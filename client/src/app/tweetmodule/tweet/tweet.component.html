@@ -2,6 +2,14 @@
 
 <h3>Welcome To My Tweet!</h3>
 <div>
+    <nav>
+        <button> all </button>
+        <button> I follow</button>
+        <button>See all tweets</button>
+    </nav>
+</div>
+
+<div>
     <textarea #tweetbox rows="4" cols="50">
             Share the world with your thoughts...
             </textarea>
@@ -14,7 +22,7 @@
 <div>
     <ul>
         <li *ngFor="let tweet of tweets">
-            <p>{{tweet.username}}:</p> <p>{{tweet.content}}</p>
+            <p class="users">{{tweet.username}}:</p> <p>{{tweet.content}}</p>
         </li>
     </ul>
 </div>

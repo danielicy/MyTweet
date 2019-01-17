@@ -2,6 +2,15 @@
 
 }
 
+.users {
+    font-weight: 900;
+    color: blueviolet;
+    width:200px;
+    padding:12px;
+}
+
+
+
 sidebar {
     width: 50px;
     position: absolute;
@@ -19,12 +28,12 @@ sidebar {
     color: blueviolet;
     border: 3px solid #00ff90;
     background-color:cornflowerblue;
-    padding: 5px;
+    padding-right: 7px;
+     margin-bottom:2px;
+    float:right;
 }
 
-.users{
-    padding:7px;
-}
+
 
 
 .right {

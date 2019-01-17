@@ -11,8 +11,12 @@
         <p>Registered users:</p>
         <ul>
             <li class="users" *ngFor="let user of users">
-                {{user.username}} ({{user.firstName}} {{user.lastName}})
-                - <a (click)="followUser(user.id)" class="follow">Follow</a>
+                <div>
+                    <p class="main">{{user.username}}  
+                    <a (click)="followUser(user.id)" class="follow">Follow</a>
+                    </p>                     
+                </div>
+
             </li>
         </ul>
     </div>
