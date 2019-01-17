@@ -6,11 +6,7 @@ namespace DataModels.Models.UserManagment
 {
     [Table("users")]
     public class User
-    {
-        public User()
-        {
-            UserId = -1;
-        }
+    {       
 
         [Key, Column("userid")]
         public int UserId { get; set; }
