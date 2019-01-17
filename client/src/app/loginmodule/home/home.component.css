@@ -3,13 +3,16 @@
 }
 
 sidebar {
-    float: left;
-    padding-right: 20px;
-    padding-bottom: 20px;
+    width: 50px;
+    position: absolute;
+    border: 1px solid black;
+    
+    
 }
 
-.main{
-float:right;
+.main {
+    padding: 5px;
+    border: 1px solid red;
 }
 
 .follow {
@@ -23,4 +26,9 @@ float:right;
     padding:7px;
 }
 
+
+.right {
+   width:80%;
+    margin-left: 500px;
+}
 
