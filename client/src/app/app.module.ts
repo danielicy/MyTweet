@@ -16,7 +16,7 @@ import { LoginComponent } from './loginmodule/login';
 import { RegisterComponent } from './loginmodule/register';
 
 import { TweetComponent } from './tweetmodule/tweet';
-import { PersonalzoneComponent } from './tweetmodule/personalzone/personalzone.component';
+ 
 
 
 @NgModule({
@@ -32,9 +32,7 @@ import { PersonalzoneComponent } from './tweetmodule/personalzone/personalzone.c
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        TweetComponent,
-		PersonalzoneComponent
-        
+        TweetComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
