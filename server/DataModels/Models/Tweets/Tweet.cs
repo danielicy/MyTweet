@@ -13,9 +13,7 @@ namespace DataModels.Models.Tweets
         
         [Column("userid")]
         public int UserId { get; set; }
-
-        [NotMapped]
-        public string UserName { get { return User.UserName; } }
+             
 
         [ForeignKey("UserId")]
         public User User { get; set; }
