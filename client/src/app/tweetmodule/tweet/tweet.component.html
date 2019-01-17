@@ -1,22 +1,23 @@
 ﻿
-<h3>Welcome To My Tweet!</h3>
-<div>
-   
+
+<div class="right">
+    <h3>Welcome To My Tweet!</h3>
     <div>
-        <div class="form-group">
+        <div>
             <label>Tweet</label>
             <textarea #tweetbox rows="4" cols="50">
-Share the world with your thoughts...
-</textarea>
+            Share the world with your thoughts...
+            </textarea>
 
             <button (click)="tweet(tweetbox.value); tweetbox.value=''">
                 Tweet
             </button>
         </div>
     </div>
+    <ul>
+        <li *ngFor="let tweet of tweets">
+            <p>{{tweet.username}}:</p> <p>{{tweet.content}}</p>
+        </li>
+    </ul>
 </div>
-<ul>
-	<li *ngFor="let tweet of tweets">
-		{{tweet.username}}: {{tweet.content}} 	
-	</li>
-</ul>
+

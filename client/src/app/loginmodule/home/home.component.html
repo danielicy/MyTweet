@@ -1,5 +1,19 @@
-﻿<h1>Welcome  {{currentUser.firstName}}!</h1>
-<p>Hi Yotam</p>
-<p>Hope You Like my App</p>
-
-<app-tweet></app-tweet>
+﻿<div class="sidebar">
+    <h1>Welcome  {{currentUser.firstName}}!</h1>
+    <p>Hi Yotam</p>
+    <p>Hope You Like my App</p>
+    <div>
+        <div >
+            <ul>
+                <li class="users" *ngFor="let user of users">
+                    {{user.username}} ({{user.firstName}} {{user.lastName}})
+                    - <a (click)="followUser(user.id)" class="follow">Follow</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <app-tweet></app-tweet>
+        </div>
+     
+    </div>
+</div>

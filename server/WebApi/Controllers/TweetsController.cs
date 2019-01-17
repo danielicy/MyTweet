@@ -87,11 +87,16 @@ namespace MyTweetAPI.Controllers
             }
         }
 
-        [HttpPost("follow")]
-        public IActionResult Follow([FromBody]FollowerDto tweetDto)
+        [HttpPost("follow/{id}/{followedid}")]
+        public IActionResult Follow(int id, int followedid)//[FromBody]FollowerDto tweetDto)
         {
             // map dto to entity
-            var follower = _mapper.Map<Follower>(tweetDto);
+            //var follower = _mapper.Map<Follower>(tweetDto);
+            Follower follower = new Follower()
+            {
+                UserId= id,
+                FollowedId = followedid
+            };
 
             try
             {

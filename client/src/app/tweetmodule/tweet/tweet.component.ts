@@ -10,7 +10,8 @@ import { AlertService, AuthenticationService } from '@/_services';
 
 @Component({
     selector: 'app-tweet',
-    templateUrl: 'tweet.component.html'
+    templateUrl: 'tweet.component.html',
+    styleUrls: ['./tweet.component.css']
 })
 export class TweetComponent implements OnInit, OnDestroy {
     msg: Tweet;
@@ -53,7 +54,7 @@ export class TweetComponent implements OnInit, OnDestroy {
         this.tweeterService.tweet({ content, userid: this.currentUser.id } as Tweet)
             .subscribe(data => {
                 this.alertService.success('What a Tweet!!', true);
-                this.tweets.push({ username: this.currentUser.username  ,content, userid: this.currentUser.id} as Tweet);
+                this.tweets.push({ username: this.currentUser.username  ,content, userid: this.currentUser.id});
             },
                 error => {
                     this.alertService.error(error);

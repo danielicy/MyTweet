@@ -1,0 +1,26 @@
+﻿body {
+
+}
+
+sidebar {
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.main{
+float:right;
+}
+
+.follow {
+    color: blueviolet;
+    border: 3px solid #00ff90;
+    background-color:cornflowerblue;
+    padding: 5px;
+}
+
+.users{
+    padding:7px;
+}
+
+
