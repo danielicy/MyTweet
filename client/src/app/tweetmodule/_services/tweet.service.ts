@@ -11,10 +11,12 @@ export class TweetsService {
         return this.http.get<Tweet[]>(`${config.apiUrl}/tweets`);
     }
 
+    //gets tweets user tweetd
     getById(id: number) {
         return this.http.get(`${config.apiUrl}/tweets/${id}`);
     }
-	
+
+    //gets tweets by users I follow
 	 getFollowedTweets(id: number) {
         return this.http.get(`${config.apiUrl}/tweets/followed/${id}`);
     }	

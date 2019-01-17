@@ -48,11 +48,13 @@ namespace MyTweetAPI.Controllers
         /// <param name="id">follower id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public IActionResult GetFollowedTweets(int id)
+        public IActionResult GetMyTweets(int id)
         {
-            var tweets = _tweetsService.GetFollowedtweets(id);
-            var userDto = _mapper.Map<Tweet>(tweets);
+            var tweets = _tweetsService.GetMyTweets(id);
+            var userDto = _mapper.Map<IList<TweetDto>>(tweets);
             return Ok(userDto);
+           
+           
         }
 
         /// <summary>
@@ -61,11 +63,13 @@ namespace MyTweetAPI.Controllers
         /// <param name="id">follower id</param>
         /// <returns></returns>
         [HttpGet("mytweets/{id}")]
-        public IActionResult GetMyTweets(int id)
+        public IActionResult GetFollowedTweets(int id)
         {
-            var tweets = _tweetsService.GetMyTweets(id);
-            var userDto = _mapper.Map<Tweet>(tweets);
-            return Ok(userDto);
+            var tweets = _tweetsService.GetFollowedtweets(id);
+
+            var tweetDtos = _mapper.Map<IList<TweetDto>>(tweets);
+
+            return Ok(tweetDtos);
         }
 
         [HttpPost("tweet")]

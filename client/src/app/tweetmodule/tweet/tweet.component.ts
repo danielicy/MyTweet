@@ -43,15 +43,23 @@ export class TweetComponent implements OnInit, OnDestroy {
         
     }
 
-    private loadAllTweets() {
+    loadAllTweets(): void{
         this.tweeterService.getAll().pipe(first()).subscribe(tweets => {
             this.tweets = tweets;
         });
     }
-
+        
+    //loads tweets I follow
      loadTweetsIFollow(): void {
-         this.tweeterService.getById(this.currentUser.id).pipe(first()).subscribe(tweets => {            
+         this.tweeterService.getFollowedTweets(this.currentUser.id).pipe(first()).subscribe(tweets => {            
              this.tweets = tweets;
+        });
+    }
+
+   // loads tweets I Tweeted
+    loadMyTweets(): void {
+        this.tweeterService.getById(this.currentUser.id).pipe(first()).subscribe(tweets => {
+            this.tweets = tweets;
         });
     }
 
