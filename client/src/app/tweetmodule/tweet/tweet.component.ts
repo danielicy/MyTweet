@@ -53,7 +53,7 @@ export class TweetComponent implements OnInit, OnDestroy {
         this.tweeterService.tweet({ content, userid: this.currentUser.id } as Tweet)
             .subscribe(data => {
                 this.alertService.success('What a Tweet!!', true);
-                this.tweets.push({ content, userid: this.currentUser.id } as Tweet);
+                this.tweets.push({ username: this.currentUser.username  ,content, userid: this.currentUser.id} as Tweet);
             },
                 error => {
                     this.alertService.error(error);
