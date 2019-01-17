@@ -18,7 +18,7 @@ export class TweetsService {
 
     //gets tweets by users I follow
 	 getFollowedTweets(id: number) {
-        return this.http.get(`${config.apiUrl}/tweets/followed/${id}`);
+       return this.http.get(`${config.apiUrl}/tweets/ifollow/${id}`);
     }	
 
     tweet(tweet: Tweet) {

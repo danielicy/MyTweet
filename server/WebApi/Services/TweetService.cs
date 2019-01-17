@@ -55,7 +55,9 @@ namespace MyTweetAPI.Services
         public IEnumerable<Tweet> GetFollowedtweets(int id)
         {
             var followed = _context.Follower.Where(follower => follower.UserId == id);
-            return _context.Tweets.Where(userid => followed.Any(f => f.UserId== userid.UserId)).OrderBy(date => date.CreatedDate);
+            return _context.Tweets.
+                Where(userid => followed.Any(f => f.FollowedId== userid.UserId))
+                .OrderBy(date => date.CreatedDate).Include("User");
         }
 
         /// <summary>
