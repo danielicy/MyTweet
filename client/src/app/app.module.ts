@@ -15,6 +15,10 @@ import { HomeComponent } from './loginmodule/home';
 import { LoginComponent } from './loginmodule/login';
 import { RegisterComponent } from './loginmodule/register';
 
+import { TweetComponent } from './tweetmodule/tweet';
+ 
+
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -27,7 +31,8 @@ import { RegisterComponent } from './loginmodule/register';
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        TweetComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

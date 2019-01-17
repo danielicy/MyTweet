@@ -1,22 +1,13 @@
 using DataCore;
 using DataModels.Models.UserManagment;
+using MyTweetAPI.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebApi.Helpers;
 
 namespace WebApi.Services
-{
-    public interface IUserService
-    {
-        User Authenticate(string username, string password);
-        IEnumerable<User> GetAll();
-        User GetById(int id);
-        User Create(User user, string password);
-        void Update(User user, string password = null);
-        void Delete(int id);
-    }
-
+{ 
     public class UserService : IUserService
     {
         private MyTweetContext _context;
@@ -55,23 +46,27 @@ namespace WebApi.Services
             return _context.Users.Find(id);
         }
 
+        public User GetByName(string name)
+        {
+            return _context.Users.Find(name);
+        }
+
         public User Create(User user, string password)
         {
             // validation
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
 
-            /*  if (_context.Users.Any(x => x.UserName.Equals( user.UserName)))
-                  throw new AppException("Username \"" + user.UserName + "\" is already taken");*/
+            
             if (_context.Users.Any(t => t.UserName.ToLower().Equals(user.UserName.ToLower())))
                 throw new AppException("Username \"" + user.UserName + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            user.Id = 100;
+          
             user.HashedPassword = passwordHash;
             user.PasswordSalt = passwordSalt;
-            user.Role = _context.Roles.Where(role => role.RoleId == 1).FirstOrDefault();
+            user.Role = _context.Roles.Where(role => role.RoleId == 3).FirstOrDefault();
 
             _context.Users.Add(user);
             _context.SaveChanges();

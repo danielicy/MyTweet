@@ -7,6 +7,10 @@ import { User } from '@/_models';
 export class UserService {
     constructor(private http: HttpClient) { }
 
+    followUser(user: User,followedid: number) {
+        return this.http.post(`${config.apiUrl}/tweets/follow/${user.id}/${followedid}`,user);
+    }
+
     getAll() {
         return this.http.get<User[]>(`${config.apiUrl}/users`);
     }

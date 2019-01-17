@@ -5,7 +5,11 @@ import { first } from 'rxjs/operators';
 import { User } from '@/_models';
 import { UserService, AuthenticationService } from '@/_services';
 
-@Component({ templateUrl: 'home.component.html' })
+
+@Component({
+    templateUrl: 'home.component.html',
+    styleUrls: ['./home.component.css']
+})
 export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
     currentUserSubscription: Subscription;
@@ -29,8 +33,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.currentUserSubscription.unsubscribe();
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => {
+    followUser(id: number) {
+        this.userService.followUser(this.currentUser,id).pipe(first()).subscribe(() => {
             this.loadAllUsers()
         });
     }
@@ -40,4 +44,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.users = users;
         });
     }
+
+
+
+
 }

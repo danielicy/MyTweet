@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using WebApi.Services;
 using DataModels.Dtos;
 using DataModels.Models.UserManagment;
+using MyTweetAPI.Services.Contracts;
 
 namespace WebApi.Controllers
 {
@@ -99,6 +100,14 @@ namespace WebApi.Controllers
         public IActionResult GetById(int id)
         {
             var user =  _userService.GetById(id);
+            var userDto = _mapper.Map<UserDto>(user);
+            return Ok(userDto);
+        }
+
+        [HttpGet("{username}")]
+        public IActionResult GetByName(string name)
+        {
+            var user = _userService.GetByName(name);
             var userDto = _mapper.Map<UserDto>(user);
             return Ok(userDto);
         }

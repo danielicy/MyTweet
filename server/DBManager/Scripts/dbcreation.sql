@@ -1,11 +1,11 @@
 ﻿
 --
--- Current Database: `c4pssdb`
+-- Current Database: `mytweetdb`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `a2bdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `mytweetdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `a2bdb`;
+USE `mytweetdb`;
 
 --
 -- Table structure for table `roles`
@@ -24,12 +24,13 @@ CREATE TABLE `roles` (
 
 -- users Table
 CREATE TABLE `users` (
-  `UserId` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` longtext,
   `first_name` longtext,
   `last_name` longtext,
   `email` longtext,
   `hashed_password` longblob,
+  `password_salt` longblob,
   `created_date` datetime NOT NULL,
   `modified_date` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
@@ -37,9 +38,60 @@ CREATE TABLE `users` (
   `role_id` int(11) NOT NULL,
   `information` varchar(1000) DEFAULT NULL,
   `user_picture` blob,
-  PRIMARY KEY (`UserId`),
+  PRIMARY KEY (`userid`),
   KEY `IX_role_id` (`role_id`) USING HASH ,
   CONSTRAINT `FK_user_app_Roles_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `tweets` (
+  `tweetid` INT NOT NULL AUTO_INCREMENT,
+  `userid` INT NOT NULL,
+  `created_date` DATETIME NOT NULL,
+   `modified_date` DATETIME DEFAULT NULL,
+  `tweet_content` longtext,
+  PRIMARY KEY (`tweetid`),
+  UNIQUE INDEX `idtweets_UNIQUE` (`tweetid` ASC),
+  INDEX `FK_user_tweet_idx` (`userid` ASC),
+  CONSTRAINT `FK_user_tweet`
+    FOREIGN KEY (`userid`)
+    REFERENCES `users` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+		CREATE TABLE `followers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userid` INT NOT NULL,
+  `followeduserid` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `FK_user_follower_idx` (`userid` ASC),
+  INDEX `FK_user_followed_idx` (`followeduserid` ASC));
+
+	/*CREATE TABLE `followers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userid` INT NOT NULL,
+  `followeduserid` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC),
+  INDEX `FK_user_follower_idx` (`userid` ASC),
+  INDEX `FK_user_followed_idx` (`followeduserid` ASC),
+  CONSTRAINT `FK_user_follower`
+    FOREIGN KEY (`userid`)
+    REFERENCES `users` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_user_followed`
+    FOREIGN KEY (`followeduserid`)
+    REFERENCES `users` (`userid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);*/
+
+    
+    -- fill roles table
+    INSERT INTO `roles` (`role_id`, `role_name`) VALUES ('1', 'admin');
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES ('2', 'operator');
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES ('3', 'user');
+
+
 
 

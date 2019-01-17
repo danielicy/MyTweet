@@ -1,9 +1,41 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 7!!</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+﻿
+
+
+<div class="main">
+
+    <h1>Hi Yotam</h1>
+    <p>Hope You Like my App</p>
+    <p>Your are logged in as  {{currentUser.firstName}}!</p>
+
+    <div class="sidebar">
+        <p>Registered users:</p>
+        <ul>
+            <li class="users" *ngFor="let user of users">
+                <div>
+                    <p class="main">
+                        {{user.username}}
+                        <a (click)="followUser(user.id)" class="follow">Follow</a>
+                    </p>
+                    
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <app-tweet></app-tweet>
+    </div>
+</div>
+   
+   
+<!--<div style="padding: 5px; border: 1px solid red;">
+    <div style="width: 150px; position: absolute; border: 1px solid black; word-wrap: break-word;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+    <div style="margin-left: 160px;">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+</div>-->
+ 
+
+
+
+
+
+

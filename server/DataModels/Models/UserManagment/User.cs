@@ -6,13 +6,9 @@ namespace DataModels.Models.UserManagment
 {
     [Table("users")]
     public class User
-    {
-        public User()
-        {
-            Id = -1;
-        }
+    {       
 
-        [Key, Column("UserId")]
+        [Key, Column("userid")]
         public int Id { get; set; }
 
         [Column("user_name")]
@@ -33,7 +29,7 @@ namespace DataModels.Models.UserManagment
         [Column("hashed_password")]
         public byte[] HashedPassword { get; set; }
 
-        [NotMapped]
+        [Column("password_salt")]
         public byte[] PasswordSalt { get; set; }
 
         [Column("created_date")]
