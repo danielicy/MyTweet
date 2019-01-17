@@ -75,7 +75,7 @@ namespace MyTweetAPI.Services
         /// <returns></returns>
         public Tweet Tweet(Tweet tweet)
         {
-            tweet.User = _context.Users.Where(user => user.UserId.Equals(tweet.UserId)).FirstOrDefault();
+            tweet.User = _context.Users.Where(user => user.Id.Equals(tweet.UserId)).FirstOrDefault();
 
             tweet.CreatedDate = DateTime.Now;
 

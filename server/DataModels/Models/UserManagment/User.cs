@@ -9,7 +9,7 @@ namespace DataModels.Models.UserManagment
     {       
 
         [Key, Column("userid")]
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         [Column("user_name")]
         public string UserName { get; set; }

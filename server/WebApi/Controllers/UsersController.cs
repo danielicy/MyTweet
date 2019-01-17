@@ -50,7 +50,7 @@ namespace WebApi.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[] 
                 {
-                    new Claim(ClaimTypes.Name, user.UserId.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -60,7 +60,7 @@ namespace WebApi.Controllers
 
             // return basic user info (without password) and token to store client side
             return Ok(new {
-                Id = user.UserId,
+                Id = user.Id,
                 Username = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
@@ -117,7 +117,7 @@ namespace WebApi.Controllers
         {
             // map dto to entity and set id
             var user = _mapper.Map<User>(userDto);
-            user.UserId = id;
+            user.Id = id;
 
             try 
             {

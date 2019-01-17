@@ -76,7 +76,7 @@ namespace WebApi.Services
 
         public void Update(User userParam, string password = null)
         {
-            var user = _context.Users.Find(userParam.UserId);
+            var user = _context.Users.Find(userParam.Id);
 
             if (user == null)
                 throw new AppException("User not found");
