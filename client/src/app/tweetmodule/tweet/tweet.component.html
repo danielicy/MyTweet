@@ -1,30 +1,35 @@
 ﻿
-
-<h3>Welcome To My Tweet!</h3>
 <div>
-    <nav>
-        <button> all </button>
-        <button> I follow</button>
-        <button>See all tweets</button>
-    </nav>
-</div>
+    <h3>Welcome To My Tweet!</h3>
+   
 
-<div>
-    <textarea #tweetbox rows="4" cols="50">
+    <div>
+        <textarea #tweetbox rows="4" cols="50">
             Share the world with your thoughts...
             </textarea>
 
 
-</div>
-<button (click)="tweet(tweetbox.value); tweetbox.value=''">
-    Tweet
-</button>
-<div>
-    <ul>
-        <li *ngFor="let tweet of tweets">
-            <p class="users">{{tweet.username}}:</p> <p>{{tweet.content}}</p>
-        </li>
-    </ul>
+    </div>
+    <button (click)="tweet(tweetbox.value); tweetbox.value=''">
+        Tweet
+    </button>
+    <div>
+        <div>
+            <p>Filter Tweets</p>
+            <nav>
+                <button> all </button>
+                <button>tweets I follow</button>
+                <button>my tweets</button>
+            </nav>
+        </div>
+        <div class="main">
+            <ul>
+                <li *ngFor="let tweet of tweets">
+                    <p class="users">{{tweet.username}}:</p> <p>{{tweet.content}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 
