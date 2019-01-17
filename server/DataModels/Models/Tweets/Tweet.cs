@@ -8,16 +8,20 @@ namespace DataModels.Models.Tweets
     [Table("tweets")]
     public class Tweet
     {
+        public Tweet()
+        {
+            Id = -1;
+        }
+
         [Key, Column("tweetid")]
         public int Id { get; set; }
         
         [Column("userid")]
         public int UserId { get; set; }
-             
-
-        [ForeignKey("UserId")]
-        public User User { get; set; }
-
+        
+        [NotMapped]
+        public string UserName { get { return User.UserName; } }
+               
         [Column("created_date")]
         public DateTime CreatedDate { get; set; }
 
@@ -26,6 +30,9 @@ namespace DataModels.Models.Tweets
 
         [Column("tweet_content")]
         public string Content { get; set; }
+
+        [ForeignKey("UserId")]
+        public User User { get; set; }
 
 
     }

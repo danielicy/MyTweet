@@ -1,6 +1,7 @@
 ﻿using DataCore;
 using DataModels.Models.Tweets;
 using DataModels.Models.UserManagment;
+using Microsoft.EntityFrameworkCore;
 using MyTweetAPI.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace MyTweetAPI.Services
 
         public IEnumerable<Tweet> GetAll()
         {
-            return _context.Tweets;
+            return _context.Tweets.Include("User");
         }
 
         public Tweet GetById(int id)
@@ -74,7 +75,7 @@ namespace MyTweetAPI.Services
         /// <returns></returns>
         public Tweet Tweet(Tweet tweet)
         {
-            tweet.User = _context.Users.Where(user => user.Id.Equals(tweet.UserId)).FirstOrDefault();
+            tweet.User = _context.Users.Where(user => user.UserId.Equals(tweet.UserId)).FirstOrDefault();
 
             tweet.CreatedDate = DateTime.Now;
 

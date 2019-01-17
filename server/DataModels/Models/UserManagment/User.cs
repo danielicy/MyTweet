@@ -9,11 +9,11 @@ namespace DataModels.Models.UserManagment
     {
         public User()
         {
-            Id = -1;
+            UserId = -1;
         }
 
         [Key, Column("userid")]
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         [Column("user_name")]
         public string UserName { get; set; }
