@@ -7,11 +7,7 @@ namespace DataModels.Models.Tweets
 {
     [Table("tweets")]
     public class Tweet
-    {
-        public Tweet()
-        {
-            Id = -1;
-        }
+    {        
 
         [Key, Column("tweetid")]
         public int Id { get; set; }

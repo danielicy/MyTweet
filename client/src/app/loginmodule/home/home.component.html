@@ -12,9 +12,11 @@
         <ul>
             <li class="users" *ngFor="let user of users">
                 <div>
-                    <p class="main">{{user.username}}  
-                    <a (click)="followUser(user.id)" class="follow">Follow</a>
-                    </p>                     
+                    <p class="main">
+                        {{user.username}}
+                        <a (click)="followUser(user.id)" class="follow">Follow</a>
+                    </p>
+                    
                 </div>
 
             </li>
