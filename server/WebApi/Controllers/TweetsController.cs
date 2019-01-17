@@ -47,7 +47,7 @@ namespace MyTweetAPI.Controllers
         /// </summary>
         /// <param name="id">follower id</param>
         /// <returns></returns>
-        [HttpGet("followed/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetFollowedTweets(int userid)
         {
             var tweets = _tweetsService.GetFollowedtweets(userid);

@@ -14,8 +14,10 @@ import { AlertService, AuthenticationService } from '@/_services';
     styleUrls: ['./tweet.component.css']
 })
 export class TweetComponent implements OnInit, OnDestroy {
-    msg: Tweet;
-    tweets: Tweet[] = [];
+    msg: Tweet;   
+    mytweets: Tweet[] = [];
+    alltweets: Tweet[] = [];
+
     currentUser: User;
     currentUserSubscription: Subscription;
     loading = false;
@@ -43,7 +45,13 @@ export class TweetComponent implements OnInit, OnDestroy {
 
     private loadAllTweets() {
         this.tweeterService.getAll().pipe(first()).subscribe(tweets => {
-            this.tweets = tweets;
+            this.alltweets = tweets;
+        });
+    }
+
+     loadTweetsIFollow(): void {
+         this.tweeterService.getById(this.currentUser.id).pipe(first()).subscribe(tweets => {
+             this.mytweets = tweets;
         });
     }
 
@@ -54,7 +62,7 @@ export class TweetComponent implements OnInit, OnDestroy {
         this.tweeterService.tweet({ content, userid: this.currentUser.id } as Tweet)
             .subscribe(data => {
                 this.alertService.success('What a Tweet!!', true);
-                this.tweets.push({ username: this.currentUser.username  ,content, userid: this.currentUser.id} as Tweet);
+                this.alltweets.push({ username: this.currentUser.username  ,content, userid: this.currentUser.id} as Tweet);
             },
                 error => {
                     this.alertService.error(error);

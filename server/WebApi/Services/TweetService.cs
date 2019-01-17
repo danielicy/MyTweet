@@ -87,7 +87,7 @@ namespace MyTweetAPI.Services
 
         public void UnFollow(Follower follower)
         {
-            var itemToRemove = _context.Follower.Where(followed => followed.Follow.Equals(follower)).FirstOrDefault();
+            var itemToRemove = _context.Follower.Where(followed => followed.Id == follower.Id).FirstOrDefault();
 
             if (follower != null)
             {

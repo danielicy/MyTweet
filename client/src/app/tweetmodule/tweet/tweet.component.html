@@ -17,14 +17,14 @@
         <div>
             <p>Filter Tweets</p>
             <nav>
-                <button> all </button>
-                <button>tweets I follow</button>
-                <button>my tweets</button>
+                <button (click)="tweet(tweetbox.value); tweetbox.value=''"> all </button>
+                <button (click)="loadTweetsIFollow();">tweets I follow</button>
+                <button (click)="tweet(tweetbox.value); tweetbox.value=''">my tweets</button>
             </nav>
         </div>
         <div class="main">
             <ul>
-                <li *ngFor="let tweet of tweets">
+                <li *ngFor="let tweet of alltweets">
                     <p class="users">{{tweet.username}}:</p> <p>{{tweet.content}}</p>
                 </li>
             </ul>

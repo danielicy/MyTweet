@@ -16,10 +16,10 @@ namespace DataModels.Models.UserManagment
         [Column("followeduserid")]
         public int FollowedId { get; set; }
 
-        [ForeignKey("UserId")]
-        public User Follow { get; set; }
+       /* [ForeignKey("UserId")]
+        public User Follow { get; set; }*/
 
-        [ForeignKey("FollowedId")]
-        public User Followed { get; set; }
+       /* [ForeignKey("FollowedId")]
+        public User Followed { get; set; }*/
     }
 }
