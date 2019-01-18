@@ -2,26 +2,35 @@
 
 }
 
-.users {
+.user {
     font-weight: 900;
     color: blueviolet;
-    width:200px;
+     width:200px;
     padding:12px;
+	 border: 1px solid darkblue;
+}
+
+.header{
+	padding: 10px;
+	margin:10px;
 }
 
 
 
 sidebar {
     width: 50px;
-    position: absolute;
+   position: relative;
+  left: -20px;
     border: 1px solid black;
+	float: left;
     
     
 }
 
 .main {
     padding: 5px;
-    border: 1px solid red;
+    border: 1px solid darkblue;
+	width:30%;
 }
 
 .follow {
@@ -29,6 +38,7 @@ sidebar {
     border: 3px solid #00ff90;
     background-color:cornflowerblue;
     padding-right: 7px;
+	padding-left: 7px;
      margin-bottom:2px;
     float:right;
 }
@@ -37,6 +47,9 @@ sidebar {
 
 
 .right {
+	top:100px;
+	position: absolute;
+ float:right;
    width:80%;
     margin-left: 500px;
 }
