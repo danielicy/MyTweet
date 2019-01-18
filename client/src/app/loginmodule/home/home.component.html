@@ -1,18 +1,17 @@
 ﻿
 
 
-<div class="main">
-
+<div class="main"> 
+<div class="header">
     <h1>Hi Yotam</h1>
     <p>Hope You Like my App</p>
     <p>Your are logged in as  {{currentUser.firstName}}!</p>
-
-    <div class="sidebar">
-        <p>Registered users:</p>
-        <ul>
+ </div>
+     
+        <ul class="sidebar">
             <li class="users" *ngFor="let user of users">
                 <div>
-                    <p class="main">
+                    <p class="user">
                         {{user.username}}
                         <a (click)="followUser(user.id)" class="follow">Follow</a>
                     </p>
@@ -21,11 +20,10 @@
 
             </li>
         </ul>
+		<app-tweet class="right"></app-tweet>
+     
     </div>
-    <div class="right">
-        <app-tweet></app-tweet>
-    </div>
-</div>
+ 
    
    
 <!--<div style="padding: 5px; border: 1px solid red;">
