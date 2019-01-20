@@ -1,5 +1,6 @@
 using DataCore;
 using DataModels.Models.UserManagment;
+using Microsoft.EntityFrameworkCore;
 using MyTweetAPI.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace WebApi.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            return _context.Users.Include("UserContacts");
         }
 
         public User GetById(int id)

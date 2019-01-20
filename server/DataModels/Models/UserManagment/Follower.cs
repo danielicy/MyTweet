@@ -6,20 +6,13 @@ namespace DataModels.Models.UserManagment
 { 
     [Table("followers")]
     public class Follower
-    {
-        [Key, Column("id")]
-        public int Id { get; set; }
-
-        [Column("userid")]
+    {       
+        [Key, Column("userid")]
         public int UserId { get; set; }
+        public virtual User User { get; set; }
 
-        [Column("followeduserid")]
+        [Column("followedid")]
         public int FollowedId { get; set; }
-
-       /* [ForeignKey("UserId")]
-        public User Follow { get; set; }*/
-
-       /* [ForeignKey("FollowedId")]
-        public User Followed { get; set; }*/
+        public virtual User Contact { get; set; }
     }
 }
