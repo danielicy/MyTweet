@@ -16,7 +16,7 @@ import { AlertService, AuthenticationService } from '@/_services';
 export class TweetComponent implements OnInit, OnDestroy {
     msg: Tweet;   
      
-    tweets: Tweet[] = [];
+    tweets: any = [];
 
     currentUser: User;
     currentUserSubscription: Subscription;
