@@ -38,10 +38,10 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.loadAllUsers()
         });
     }
-
+    //https://stackoverflow.com/questions/28407392/automapper-many-to-many-mapping
     private loadAllUsers() {
         this.userService.getAll().pipe(first()).subscribe(users => {
-           // var tmpusers = users
+          
             this.users = users.filter(
                 user => user.username != this.currentUser.username);;
         });
