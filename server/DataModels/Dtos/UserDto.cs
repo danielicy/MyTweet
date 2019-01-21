@@ -12,5 +12,6 @@ namespace DataModels.Dtos
         public string Username { get; set; }
         public string Password { get; set; }
         public IList<FollowerDto> Contacts { get; set; }
+         
     }
 }

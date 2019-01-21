@@ -9,11 +9,13 @@
  </div>
      <p>Other Tweeters</p>
         <ul class="sidebar">
-            <li class="users" *ngFor="let user of users">
+            <li class="users" *ngFor="let user of users" >
                 <div>
-                    <p class="user">
+                    <p class="user" [ngClass]="{isfollowed:user.isfollowed}">
                         {{user.username}}
-                        <a (click)="followUser(user.id)" class="follow">Follow</a>
+                        <a (click)="followUser(user.id)" class="follow" *ngIf="!user.isfollowed">Follow </a>
+                        <a (click)="followUser(user.id)" class="follow" *ngIf="user.isfollowed">Following </a>
+
                     </p>
                     
                 </div>

@@ -43,14 +43,19 @@ sidebar {
     float:right;
 }
 
+.isfollowed {
+    color: grey;
+    border: 3px solid #b9b3b3
+}
+
 
 
 
 .right {
-	top:100px;
-	position: absolute;
- float:right;
-   width:80%;
+    top: 100px;
+    position: absolute;
+    float: right;
+    width: 80%;
     margin-left: 500px;
 }
 

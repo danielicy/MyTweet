@@ -4,6 +4,7 @@ import { first } from 'rxjs/operators';
 
 import { User } from '@/_models';
 import { UserService, AuthenticationService } from '@/_services';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -38,15 +39,26 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.loadAllUsers()
         });
     }
+
+      
     //https://stackoverflow.com/questions/28407392/automapper-many-to-many-mapping
     private loadAllUsers() {
         this.userService.getAll().pipe(first()).subscribe(users => {
-          
+
             this.users = users.filter(
-                user => user.username != this.currentUser.username);;
+                user => user.username != this.currentUser.username);
+
+            this.users.forEach(user => this.isUserFollowed(user));
         });
     }
 
+    isUserFollowed(user: User) {
+        this.currentUser.contacts.forEach(contact => {
+            if (contact.followedId === user.id) {
+                user.isfollowed = true;
+            }
+        });
+    }
 
 
 
