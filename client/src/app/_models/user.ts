@@ -4,5 +4,8 @@
     password: string;
     firstName: string;
     lastName: string;
+    contacts: string[];
     token: string;
+    isfollowed: boolean;
+    
 }

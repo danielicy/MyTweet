@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DataModels.Models.Tweets;
 using DataModels.Models.UserManagment;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +23,25 @@ namespace DataCore
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {            
-            base.OnModelCreating(modelBuilder);          
-           
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Follower>().HasKey(r => new { r.UserId, r.FollowedId });
+
+            modelBuilder.Entity<Follower>()
+            .HasOne(pt => pt.User)
+            .WithMany(p => p.UserContacts)
+            .HasForeignKey(pt => pt.UserId).OnDelete(DeleteBehavior.Restrict); ;
+
+            modelBuilder.Entity<Follower>()
+            .HasOne(pt => pt.Contact)
+            .WithMany(t => t.ContactUsers)
+            .HasForeignKey(pt => pt.FollowedId).OnDelete(DeleteBehavior.Restrict); ;
+
+        }
+
+        private void DoDo()
+        {
+            
         }
 
         private Boolean DoMore(int v)
@@ -41,9 +59,7 @@ namespace DataCore
         public DbSet<Tweet> Tweets { get; set; }
         public DbSet<Follower> Follower { get; set; }
 
-
-
-
+       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
              
@@ -55,5 +71,7 @@ namespace DataCore
         }
 
     }
+
+   
 }
 

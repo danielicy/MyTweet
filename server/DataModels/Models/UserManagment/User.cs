@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -57,6 +58,9 @@ namespace DataModels.Models.UserManagment
 
         [ForeignKey("RoleId")]
         public Role Role { get; set; }
-      
+
+        public List<Follower> UserContacts { get; set; }
+        public List<Follower> ContactUsers { get; set; }
+
     }
 }

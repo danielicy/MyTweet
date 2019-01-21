@@ -1,5 +1,6 @@
 using DataCore;
 using DataModels.Models.UserManagment;
+using Microsoft.EntityFrameworkCore;
 using MyTweetAPI.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,9 @@ namespace WebApi.Services
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.UserName == username);
+            var user = _context.Users
+                .Include("UserContacts")
+                .SingleOrDefault(x => x.UserName == username);
 
             // check if username exists
             if (user == null)
@@ -38,7 +41,7 @@ namespace WebApi.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            return _context.Users.Include("UserContacts");
         }
 
         public User GetById(int id)
