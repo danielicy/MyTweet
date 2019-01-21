@@ -23,7 +23,9 @@ namespace WebApi.Services
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.UserName == username);
+            var user = _context.Users
+                .Include("UserContacts")
+                .SingleOrDefault(x => x.UserName == username);
 
             // check if username exists
             if (user == null)

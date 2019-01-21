@@ -64,6 +64,7 @@ namespace WebApi.Controllers
                 Username = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
+                Contacts = _mapper.Map<IList<FollowerDto>>(user.UserContacts),
                 Token = tokenString
             });
         }
