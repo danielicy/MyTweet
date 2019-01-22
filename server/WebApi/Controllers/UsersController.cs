@@ -13,12 +13,14 @@ using WebApi.Services;
 using DataModels.Dtos;
 using DataModels.Models.UserManagment;
 using MyTweetAPI.Services.Contracts;
+using Microsoft.AspNetCore.Cors;
+ 
 
 namespace WebApi.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]")]    
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
