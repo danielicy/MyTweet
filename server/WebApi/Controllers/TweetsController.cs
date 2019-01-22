@@ -96,10 +96,10 @@ namespace MyTweetAPI.Controllers
         {
             // map dto to entity
             //var follower = _mapper.Map<Follower>(tweetDto);
-            Follower follower = new Follower()
+            Contacts follower = new Contacts()
             {
                 UserId= id,
-                FollowedId = followedid
+                ContactId = followedid
             };
 
             try
@@ -119,7 +119,7 @@ namespace MyTweetAPI.Controllers
         public IActionResult UnFollow([FromBody]FollowerDto tweetDto)
         {
             // map dto to entity
-            var follower = _mapper.Map<Follower>(tweetDto);
+            var follower = _mapper.Map<Contacts>(tweetDto);
 
             try
             {

@@ -58,17 +58,17 @@ CREATE TABLE `tweets` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-		CREATE TABLE `followers` (
+		CREATE TABLE `contacts` (
   `userid` INT NOT NULL,
-  `followedid` INT NOT NULL,
-  PRIMARY KEY (`userid`, `followedid`),
+  `contactid` INT NOT NULL,
+  PRIMARY KEY (`userid`, `contactid`),
     CONSTRAINT `FK_user`
     FOREIGN KEY (`userid`)
     REFERENCES `users` (`userid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `FK_followed`
-    FOREIGN KEY (`followedid`)
+  CONSTRAINT `FK_contact`
+    FOREIGN KEY (`contactid`)
     REFERENCES `users` (`userid`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

@@ -11,9 +11,9 @@ namespace MyTweetAPI.Services.Contracts
     {
         Tweet Tweet(Tweet content);
 
-        void Follow(Follower follower);
+        void Follow(Contacts contact);
 
-        void UnFollow(Follower follower);
+        void UnFollow(Contacts contact);
 
         IEnumerable<Tweet> GetFollowedtweets(int id);
 

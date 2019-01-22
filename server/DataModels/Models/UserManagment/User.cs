@@ -59,8 +59,8 @@ namespace DataModels.Models.UserManagment
         [ForeignKey("RoleId")]
         public Role Role { get; set; }
 
-        public List<Follower> UserContacts { get; set; }
-        public List<Follower> ContactUsers { get; set; }
+        public List<Contacts> UserContacts { get; set; }
+        public List<Contacts> ContactUsers { get; set; }
 
     }
 }

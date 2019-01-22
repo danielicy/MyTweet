@@ -25,17 +25,17 @@ namespace DataCore
         {            
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Follower>().HasKey(r => new { r.UserId, r.FollowedId });
+            modelBuilder.Entity<Contacts>().HasKey(r => new { r.UserId, r.ContactId });
 
-            modelBuilder.Entity<Follower>()
+            modelBuilder.Entity<Contacts>()
             .HasOne(pt => pt.User)
             .WithMany(p => p.UserContacts)
             .HasForeignKey(pt => pt.UserId).OnDelete(DeleteBehavior.Restrict); ;
 
-            modelBuilder.Entity<Follower>()
+            modelBuilder.Entity<Contacts>()
             .HasOne(pt => pt.Contact)
             .WithMany(t => t.ContactUsers)
-            .HasForeignKey(pt => pt.FollowedId).OnDelete(DeleteBehavior.Restrict); ;
+            .HasForeignKey(pt => pt.ContactId).OnDelete(DeleteBehavior.Restrict); ;
 
         }
 
@@ -57,7 +57,7 @@ namespace DataCore
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Tweet> Tweets { get; set; }
-        public DbSet<Follower> Follower { get; set; }
+        public DbSet<Contacts> Follower { get; set; }
 
        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

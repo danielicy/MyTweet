@@ -30,7 +30,7 @@ namespace MyTweetAPI.Services
             throw new NotImplementedException();
         }
 
-        public void Follow(Follower follower)
+        public void Follow(Contacts follower)
         {
             _context.Follower.Add(follower);
             _context.SaveChanges();
@@ -56,7 +56,7 @@ namespace MyTweetAPI.Services
         {
             var followed = _context.Follower.Where(follower => follower.UserId == id);
             return _context.Tweets.
-                Where(userid => followed.Any(f => f.FollowedId== userid.UserId))
+                Where(userid => followed.Any(f => f.ContactId == userid.UserId))
                 .OrderBy(date => date.CreatedDate).Include("User");
         }
 
@@ -87,9 +87,9 @@ namespace MyTweetAPI.Services
             return tweet;
         }
 
-        public void UnFollow(Follower follower)
+        public void UnFollow(Contacts follower)
         {
-            var itemToRemove = _context.Follower.Where(followed => followed.FollowedId == follower.UserId).FirstOrDefault();
+            var itemToRemove = _context.Follower.Where(followed => followed.ContactId == follower.UserId).FirstOrDefault();
 
             if (follower != null)
             {
