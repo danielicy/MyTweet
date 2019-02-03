@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { CommonModule } from '@angular/common';
+ 
 
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -22,6 +26,9 @@ import { RegisterComponent } from '../usermanagment/components/register/register
     AlertComponent
   ],
   imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     CommonModule,
     HomeRoutingModule
   ],
