@@ -71,7 +71,8 @@
     <Compile Include="ScriptElements\UpgradeExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\dbcreation.sql" />
+    <Content Include="Scripts\mysqldbcreation.sql" />
+    <Content Include="Scripts\sqlserverdbcreate.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
