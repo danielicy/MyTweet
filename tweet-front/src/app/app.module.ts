@@ -6,10 +6,12 @@ import { HomeModule } from '../app/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AlertComponent } from './usermanagment/components/';
 
 @NgModule({
   declarations: [
-    AppComponent     
+    AppComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

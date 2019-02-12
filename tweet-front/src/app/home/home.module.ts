@@ -22,8 +22,8 @@ import { RegisterComponent } from '../usermanagment/components/register/register
   declarations: [
     HomeComponent,
     RegisterComponent,
-    LoginComponent,
-    AlertComponent
+    LoginComponent
+    
   ],
   imports: [
     BrowserModule,
