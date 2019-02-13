@@ -33,7 +33,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-              services.AddDbContext<MyTweetContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+              services.AddDbContext<MyTweetContext>(options => options.UseMySQL(Configuration.GetConnectionString("DebugConnection")));
           // services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
             services.AddMvc();
             services.AddAutoMapper();
