@@ -11,7 +11,7 @@ import { User } from '../app/usermanagment/models';
 })
 export class AppComponent {
   currentUser: User;
-
+  title:"Kawabanga";
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService

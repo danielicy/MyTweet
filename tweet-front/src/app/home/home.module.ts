@@ -18,11 +18,14 @@ import { ErrorInterceptor } from '../usermanagment/helpers/error';
 import { LoginComponent } from '../usermanagment/components/login/login.component';
 import { RegisterComponent } from '../usermanagment/components/register/register.component';
 
+import { TweetModule } from '../tweet/tweet.module';
+
+
 @NgModule({
   declarations: [
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent    
     
   ],
   imports: [
@@ -30,7 +33,9 @@ import { RegisterComponent } from '../usermanagment/components/register/register
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    TweetModule
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
