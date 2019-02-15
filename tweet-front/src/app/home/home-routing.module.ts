@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
+import { TweetModule } from '../tweet/tweet.module';
 import { LoginComponent, RegisterComponent } from '../usermanagment/components';
 
 const routes: Routes = [

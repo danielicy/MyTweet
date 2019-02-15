@@ -6,6 +6,9 @@ import { TweetComponent } from '../tweet/components';
   declarations: [TweetComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    TweetComponent
   ]
 })
 export class TweetModule { }
