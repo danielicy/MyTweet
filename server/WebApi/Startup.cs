@@ -17,6 +17,8 @@ using Microsoft.Extensions.Options;
 using DataCore;
 using MyTweetAPI.Services.Contracts;
 using MyTweetAPI.Services;
+using EFGetStarted.AspNetCore.NewDb.Models;
+ 
 
 namespace WebApi
 {
@@ -34,7 +36,13 @@ namespace WebApi
         {
             services.AddCors();
               services.AddDbContext<MyTweetContext>(options => options.UseMySQL(Configuration.GetConnectionString("DebugConnection")));
-          // services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
+
+            
+            services.AddDbContext<BloggingContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")));
+
+
+            // services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
             services.AddMvc();
             services.AddAutoMapper();
 
